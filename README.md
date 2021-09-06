@@ -1,6 +1,6 @@
 # Como iniciar
 
-CRUD implementado com Express, Handlebars e sequelize.
+CRUD implementado com Express, Handlebars e Sequelize.
 
 Você vai precisar possuir o Node.js instalado em sua máquina.
 
