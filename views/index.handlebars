@@ -1,0 +1,114 @@
+<button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal"
+    data-target="#modalAdicionar">Adicionar Usuario</button>
+<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">nome</th>
+            <th scope="col">email</th>
+            <th scope="col">senha</th>
+            <th scope="col">apagar</th>
+            <th scope="col">editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each usuarios}}
+        <tr>
+            <th scope="row">{{dataValues.id}}</th>
+            <td>{{dataValues.nome}}</td>
+            <td>{{dataValues.email}}</td>
+            <td>{{dataValues.senha}}</td>
+            <td><a type="button" class="btn btn-danger" href="/apagar/usuario/{{dataValues.id}}">apagar</a></td>
+            {{!-- --}}
+            <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEditar"
+                    data-id="{{dataValues.id}}" data-nome="{{dataValues.nome}}" data-email="{{dataValues.email}}"
+                    data-senha="{{dataValues.senha}}">Editar</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- Modal adicionar-->
+<div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/adicionar">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nome</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Seu nome"
+                            required="required" name="nome" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Endereço de email</label>
+                        <input required="required" type="email" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Seu email" name="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="password" class="form-control" placeholder="Senha" required="required"
+                            name="senha" />
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success">Adicionar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal editar -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">editar usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/editar">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">id</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Seu id"
+                            readonly="readonly" name="id" id="id" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nome</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Seu nome"
+                            required="required" name="nome" id="nome" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Endereço de email</label>
+                        <input required="required" type="email" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Seu email" name="email" id="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="text" class="form-control" placeholder="Senha" required="required" name="senha"
+                            id="senha" />
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-success">Editar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
